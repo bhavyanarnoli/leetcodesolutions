@@ -1,6 +1,6 @@
 
 class Node {
-    static int value;
+    int value;
     Node next;
 
     Node  (int val){
@@ -19,17 +19,19 @@ public class Main {
       t= add(t,4);
       t= add(t,5);
       printvalues(t);
+      reverse(t);
+      System.out.println();
+      printvalues(t);
+
     }
     public static Node add(Node s, int val){
-        Node head= s;
+
         Node n= new Node(val);
-        while(s.next!=null){
-            s= s.next;
-        }
-        s.next=n;
-        return head;
+        n.next=s;
+        s= n;
+        return s;
     }
-    public Node reverse(Node s, int val){
+    public static Node reverse(Node s){
         Node t=s;
         Node p=s;
         if(t.next==null){
@@ -45,9 +47,10 @@ public class Main {
         return t;
     }
     public static void printvalues(Node t){
-        while(t!=null){
-            System.out.println(t.value);
-            t= t.next;
+        Node s=t;
+        while(s!=null){
+            System.out.println(s.value);
+            s= s.next;
         }
     }
 }
